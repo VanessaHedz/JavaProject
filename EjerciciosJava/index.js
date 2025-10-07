@@ -7,7 +7,7 @@ $(document).ready(function(){
         console.log("AAAAAAAAAAAAAAAAAAAAAAAAAA");
 
         $.ajax({
-            url:"e1.java",
+            url:"e1",
             method:"post",
             dataType:'json',
             success: function(){
@@ -17,7 +17,6 @@ $(document).ready(function(){
 
             }
         });
-
-    })
+    });
 
 });
