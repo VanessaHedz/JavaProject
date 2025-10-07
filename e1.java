@@ -1,3 +1,7 @@
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -5,16 +9,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet.*;
 
-public class e1{
+public class e1 extends HttpServlet{
 
     public static void main(String args[]){
         try{
             Connection conn = DBConnection(); //Conexión con la base de datos
             Statement statement = conn.createStatement();
-            ResultSet select = statement.executeQuery("SELECT * FROM catalogo");
+            ResultSet rs = statement.executeQuery("SELECT * FROM catalogo");
 
-            System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-            System.out.println(select);
+            while (rs.next()) {
+                System.out.println("ID: " + rs.getInt("id") + " Título: " + rs.getString("titulo"));
+            }
 
 
         }catch(SQLException e){
